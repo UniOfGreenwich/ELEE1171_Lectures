@@ -1,72 +1,99 @@
 ---
-title: Intro to Cryptography
-description: Intro to Cryptography Slides
-class: gaia
-_class:
-  - lead
-  - invert
-style: |
-    #img-right{
-      float: right;
-    }
-    img[alt~="center"] {
-      display: block;
-      margin: 0 auto;
-    }
-    table {
-      border-collapse: collapse;
-      font-size: 16.5px;
-    }
-    table, th,tr, td {
-      border: none!important;
-      vertical-align: middle;
-    }
-    section::after {
-      content: attr(data-marpit-pagination) '/' attr(data-marpit-pagination-total);
-    }
-footer: "ELEE1171 | Securing Technologies"
-size: 16:9
+marp: true
+---
+
+<!--
+# Metadata
+title: Cryptography
+author: Seb Blair (CompEng0001)
+description: Lecture slides on Cryptography
+keywords: module handbook
+lang: en
+
+# Slide styling
+theme: uog-theme
+_class: lead title
 paginate: true
 _paginate: false
-marp: true
-math: true
+transition: fade 250ms
+
+style: |
+  header em { font-style: normal; view-transition-name: header; }
+  header strong { font-weight: inherit; view-transition-name: header2; }
+  header:not:has(em) { view-transition-name: header; }
+-->
+
+# Cryptography
+
+<div align=center style="font-size:76px; padding-left:300px;padding-right:300px;" >
+
+```py
+module = Module(
+    code="ELEE1171",
+    name="Securing Technologies",
+    credits=15,
+    module_leader="Seb Blair BEng(H) PGCAP MIET MIHEEM FHEA"
+)
+```
+
+</div>
+
+<!-- _footer: "[Download as a PDF](https://github.com/UniOfGreenwich/ELEE1171_Lectures/raw/main/content/Cryptography/Cryptography.pdf)" -->
+
 ---
 
-<!-- _footer: "[Download as a PDF](https://github.com/UniOfGreenwich/ELEE1171_Lectures/raw/gh-pages/content//c/Users/dev/Git/UoG/ELEE1171/Lectures/content/Cryptography/Cryptography.pdf)" -->
+<style scoped>
+h1 { view-transition-name: header2; }
+</style>
 
-# Intro to Cryptography
-
-    Module Code: ELEE1171
-
-    Module Name: Securing Technologies
-
-    Lecturer: Seb Blair BEng(H) PGCAP MIET MIHEEM FHEA
-
----
-
+<!-- header: "_Cryptography_" -->
 
 ## Main Goals of Security: CIA
 
-- Confidentiality
+<div style="font-size:28px;padding-left:50px;padding-top:10px">
 
-- Integrity
-  
-- Availability
+<br>
 
-![bg right:50% 80%](../../figures/CIA.jpg)
+**CIA Triad (Information Security)**
+
+<br>
+
+**Confidentiality (C)**: Ensures that sensitive information is only accessible to authorized individuals, preventing unauthorized access or disclosure.
+
+<br>
+
+**Integrity (I)**: Maintains the accuracy and trustworthiness of data by preventing unauthorized modifications.
+
+<br>
+
+**Availability (A)**: Guarantees that information and systems are accessible to users when needed, ensuring reliable access.
+
+</div>
+
+![drop-shadow bg right:50% 80%](../../figures/CIA.jpg)
 
 ---
 
 ## Quick Definitions
 
-<div style="font-size:24px">
+<div style="font-size:28px">
 
 - **Cryptography**: the art of secret writing!
 
+<br>
+
 - **Encryption**: converting information to a format **unreadable by unintended recipients**. Only intended recipients  with the correct key and algorithm can read it and get its true meaning.
 
+<br>
+
 - **Hashing**: converts data or message into an irreversible string of fixed length.
+
+<br>
+
 - Confidentiality can be achieved using **Encryption**
+
+<br>
+
 - Data Integrity can be verified using **Hashing**
 
 </div>
@@ -75,9 +102,9 @@ math: true
 
 ##  Why Do We Need Cryptography?
 
-<div style="padding-top:100px">
+<div style="padding-top:200px">
 
-![](../../figures/why_do_we_need_crypt.png)
+![drop-shadow w:1200](../../figures/why_do_we_need_crypt.png "centered")
 
 </div>
 
@@ -87,18 +114,18 @@ math: true
 
 <div style="padding-bottom:40px">
 
-![center](../../figures/transposition_one.png)
+![drop-shadow](../../figures/transposition_one.png "centered")
 
 </div>
+
+*Also known as Ceaser Cipher
 
 ---
 
 ## Hashing
 
-
-![center w:700](../../figures/hashing.png)
-
-<div style="font-size:22px">
+<div class="columns-2" style="font-size:28px;padding-bottom:150px">
+<div style="padding-top:150px">
 
  **Windows**
  
@@ -111,25 +138,34 @@ math: true
  ```sh
  sha256sum   <filename>    [ENTER]
  ```
+</div>
+<div style="padding-top:200px">
 
- The major difference between Hashing and Encryption is that:
- No keys are used in hashing but only algorithms e.g., MD5
+![drop-shadow center w:700](../../figures/hashing.png)
 
- </div>
+</div>
+</div>
+
+The major difference between Hashing and Encryption is that: 
+- No keys are used in hashing but only algorithms e.g., MD5
 
 ---
 
 ## Types of Encryption
 
-![center w:700](../../figures/asym_sym.png)
+![drop-shadow w:1200](../../figures/asym_sym.png "centered")
 
 ----
 
 ## Symmetric
 
-![center w:750](../../figures/sym.png)
+<div class="columns-2" style="padding-top:100px">
+<div>
 
-<div style="font-size:22px">
+![drop-shadow w:800](../../figures/sym.png)
+
+</div>
+<div style="font-size:28px">
 
  - Same key for encryption
  - Key sharing is a problem
@@ -138,14 +174,19 @@ math: true
  - Sutiable for transmitting bluk data
 
 </div>
+</div>
 
 ---
 
 ## Asymmetric
 
-![center w:750](../../figures/asym.png)
+<div class="columns-2" style="padding-top:100px">
+<div style="padding-top:60px">
 
-<div style="font-size:22px">
+![drop-shadow w:800](../../figures/asym.png)
+
+</div>
+<div style="font-size:28px">
 
 - Uses Public Key Infrastructure (PKI)
 - Both parties have their key pair
@@ -160,13 +201,17 @@ math: true
 
 ## Example Asymetric
 
-<div style="font-size:21px">
+<div class="columns-2">
+<div style="padding-top:200px">
 
 **Generate Key**
 
 ```sh
 $ ssh-keygen -t ed25519 -C "ELEE1171"
 ```
+
+</div>
+<div style="padding-top:100px">
 
 **Public key**
 
@@ -189,36 +234,39 @@ AAAED0Oks/Py0THM2cX0k+QqhjzGx4CZ6xXU3UL3vejLTHRJqFxk/iuYfO2GeOx4BTK4Gy
 ```
 
 </div>
+</div>
 
 ---
 
 ## Digital Signature
 
-<div style="font-size:24px; padding-bottom:20px">
+<div style="font-size:28px; padding-top:220px">
 
--  Digital Signature: Encrypt message hash with private key, and recipient decrypts hash using sender’s public key. This verifies **authenticity**
+-  Digital Signature: 
+   -  Encrypt message hash with private key, and recipient decrypts hash using sender’s public key. 
+   -  This verifies **authenticity**
 
 </div>
 
-![center w:1000](../../figures/digital_sig_one.png)
+![drop-shadow bg right:50% 90% ](../../figures/digital_sig_one.png)
 
 ---
 
 ## Combining Digital Signature With PKI
 
-<div style="font-size:24px; padding-bottom:20px">
+<div style="font-size:28px; padding-top:220px">
 
 -  Digital Signature: Encrypt message hash with private key, and recipient decrypts hash using sender’s public key. This verifies **authenticity**
 
 </div>
 
-![center w:1000](../../figures/digital_sig_two.png)
+![drop-shadow bg right:50% 90% ](../../figures/digital_sig_two.png)
 
 ---
 
 ## Digital Certifcates
 
-<div style="font-size:24px;">
+<div style="font-size:24px; padding-top:180px">
 
 - Digital Certificate: A file that contains your public key and other necessary information to verify the validity and authenticity of your public key.
 
@@ -230,12 +278,13 @@ AAAED0Oks/Py0THM2cX0k+QqhjzGx4CZ6xXU3UL3vejLTHRJqFxk/iuYfO2GeOx4BTK4Gy
 
 </div>
 
-![bg right:50% 90%](../../figures/Dig_sig_CA.png)
+![drop-shadow bg right:50% 90% ](../../figures/Dig_sig_CA.png)
 
 ----
 
 ## Encryption Algorithms
 
+<div style="font-size:22px">
 
 |Algorithm|	Key Type|	Key Length (bits)|	Strengths	|Common Uses|
 |---|----|---|---|---|
@@ -250,8 +299,41 @@ AAAED0Oks/Py0THM2cX0k+QqhjzGx4CZ6xXU3UL3vejLTHRJqFxk/iuYfO2GeOx4BTK4Gy
 |DSA|	Asymmetric|	1024, 2048, 3072|	Secure, used in government applications|	Government applications, digital signatures|
 |Diffie-Hellman|	Asymmetric	|Varies|	Used for secure key exchange|	Key exchange, secure communication|
 
+</div>
+
 ---
 
 ## Asymmetric vs Symmetric: Which Should I Use?
 
-![](../../figures/SecOpTriad.png)
+<div style="padding-top:150px">
+
+![drop-shadow w:800](../../figures/SecOpTriad.png "centered")
+
+---
+
+## Asymmetric vs Symmetric: Which Should I Use?
+
+![drop-shadow w:800](../../figures/SecOpTriad.png "centered")
+
+<div class="columns-2">
+<div style="font-size:24px">
+
+**CIA Triad (Information Security)**
+**Confidentiality (C)**: Ensures that sensitive information is only accessible to authorized individuals, preventing unauthorized access or disclosure.
+
+**Integrity (I)**: Maintains the accuracy and trustworthiness of data by preventing unauthorized modifications.
+
+**Availability (A)**: Guarantees that information and systems are accessible to users when needed, ensuring reliable access.
+
+</div>
+<div style="font-size:24px">
+
+**FSP Triangle (Design Trade-offs)**
+**Functionality (F)**: Refers to the features and capabilities a system provides to meet user and business requirements.
+
+**Security (S)**: Involves protecting systems and data from threats, often requiring compromises with functionality or performance.
+
+**Performance (P)**: Measures how efficiently a system runs, including speed and responsiveness, which can sometimes conflict with security measures.
+
+</div>
+</div>
