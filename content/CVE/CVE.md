@@ -148,7 +148,10 @@ The CVSS produces a numerical score to represent the severity of a vulnerability
 
 ## Use the CVE Scoring System Calculator
 
-- ![https://www.first.org/cvss/calculator/4-0](https://www.first.org/cvss/calculator/4-0)
+![](../../figures/CVE_Calculator.png "centered")
+
+
+<!-- _footer: https://www.first.org/cvss/calculator/4-0 -->
 
 
 ---
