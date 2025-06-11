@@ -102,8 +102,6 @@ h1 { view-transition-name: header2; }
 
 <!-- _footer: https://www.cve.org/ -->
 
-
-
 ---
 
 ## CVE Record
@@ -130,19 +128,11 @@ h1 { view-transition-name: header2; }
 
 ## Common Vulnerability Scoring System (CVSS) 
 
-The CVSS produces a numerical score to represent the severity of a vulnerability. The numerical score can then be translated into a qualitative representation (such as low, medium, high, and critical) to help organizations properly assess and prioritize their vulnerability management processes. Learn more about the latest CVSS version 4.0 on the ../
+- The CVSS produces a numerical score to represent the severity of a vulnerability. 
 
+- The numerical score can then be translated into a qualitative representation (such as low, medium, high, and critical) to help organizations properly assess and prioritize their vulnerability management pr
 
----
-
-## Find some CVEs...
-
-
-- Identify familiar products (e.g. Windows, Apache, Android) and explore if they’ve had CVEs in the past.
-
-  - find a CVSS score, exploitability, patch, and impact.
-
-- Why might public vulnerability databases matter in modern software development?
+- Learn more about the latest CVSS version 4.0 at https://www.first.org/cvss/v4-0/
 
 ---
 
@@ -156,9 +146,118 @@ The CVSS produces a numerical score to represent the severity of a vulnerability
 
 ---
 
-## Basics on SQL
+## Find some CVEs...
 
-...
+<div style="padding-top:105px">
+
+- Why might public vulnerability databases matter in modern software development?
+
+<br>
+
+- Identify familiar products (e.g. Windows, Apache, Android) and explore if they’ve had CVEs in the past.
+
+  - find a CVSS score, exploitability, patch, and impact.
+      <br>
+    - https://www.cve.org/
+      <br>
+    - https://www.tenable.com/cve
+
+</div>
+
+---
+
+## CVE-2025-5791 [Users: `root` appended to group listings]
+
+<div class="columns-2" style="padding-top:170px">
+
+<div style="padding-top:40px">
+
+This vulnerability allows privilege escalation via incorrect group listing when a user or process has fewer than exactly 1024 groups, leading to the erroneous inclusion of the root group in the access list.
+
+</div>
+<div>
+
+
+```rust
+let mut buff: Vec<gid_t> = vec![0; 1024];
+[...]
+let res = unsafe {
+    libc::getgroups(1024, buff.as_mut_ptr())
+};
+[...]
+if res < 0 {...
+else {
+    let mut groups = buff.into_iter()
+```
+
+</div>
+</div>
+
+
+<!-- _footer: https://www.cve.org/CVERecord?id=CVE-2025-5791 -->
+
+---
+
+
+## Structured Query Language (SQL) — Quick Reference
+
+<div class="columns-2" style="padding-top:150px">
+
+<div style="font-size:26px; padding-right:20px;">
+
+### Common Keywords
+
+<div class="columns-2">
+<div>
+
+- `SELECT`
+- `FROM`
+- `WHERE`
+- `INSERT INTO`
+- `VALUES`
+- `UPDATE`
+- `SET`
+
+</div>
+
+<div style="padding-top:20px">
+
+- `DELETE`
+- `JOIN`
+- `ORDER BY`
+- `GROUP BY`
+- `LIKE`, `IN`, `IS NULL`
+- `AND`, `OR`, `NOT`
+
+</div>
+</div>
+
+</div>
+
+<div style="font-size:25px; padding-left:20px;">
+
+### Example Commands
+
+```sql
+-- Get all users
+SELECT * FROM users;
+
+-- Insert a new record
+INSERT INTO users (name, role) VALUES ('Donald', 'admin');
+
+-- Update a password
+UPDATE users SET password='secret' WHERE id=1;
+
+-- Delete inactive users
+DELETE FROM users WHERE active=0;
+
+-- Search by pattern
+SELECT * FROM users WHERE name LIKE 'A%';
+```
+
+</div> 
+</div> 
+
 
 ---
 
@@ -194,7 +293,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </form>
 ```
 
-<div  class="columns-2" style="font-size:26px">
+<div  class="columns-2" style="font-size:24px">
 <div>
 
 Example inputs: 
@@ -215,7 +314,7 @@ Or:
 
 
 </div>
-<div style="padding-top:30px;">
+<div style="padding-top:20px;padding-left:50px;">
 
 ![](../../figures/SQL_CVE.png)
 
@@ -250,7 +349,7 @@ curl -H "User-Agent: () { :; }; /bin/bash -c 'id'" \
 ```
 
 </div>
-<div style="padding-top: 30px;">
+<div style="padding-top: 35px;">
 
 ![](../../figures/shellshock-cve.png)
 
