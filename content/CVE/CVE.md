@@ -356,48 +356,6 @@ curl -H "User-Agent: () { :; }; /bin/bash -c 'id'" \
 </div>
 </div>
 
-
----
-title: The Shell 
-description: The Shell
-class: gaia
-_class:
-  - lead
-  - invert
-style: |
-    img[alt~="center"] {
-      display: block;
-      margin: 0 auto;
-    }
-    #img-right{
-      float: right;
-    }
-    table{
-      font-size: 18 px;
-    }
-    section::after {
-      content: attr(data-marpit-pagination) '/' attr(data-marpit-pagination-total);
-    }
-footer: COMP1712  | Computer Architectures and Operating Systems
-size: 16:9
-paginate: true
-_paginate: false
-marp: true
-math: true
----
-
-<!-- _footer: "[Download as a PDF](https://github.com/UniOfGreenwich/COMP1712-Lectures/raw/gh-pages/content/Shell_POSIX/Shell_POSIX.pdf)" -->
-
-# The Shell
-
-    Module Code: COMP1712
-
-    Module Name: Computer Architectures and Operating Systems
-
-    Credits: 15
-
-    Module Leader: Seb Blair BEng(H) PGCAP MIET MIHEEM FHEA
-    
 ---
 
 ## What is a shell?
@@ -432,7 +390,10 @@ The shell can be run in three possible modes:
 - Non-interactive 
 
 ---
+
 ## Operations for Different Shell Modes
+
+<div style="padding-top:75px">
 
 - Login to a remote system via SSH : **Login**, **Interactive**
 - User successfully login into the system, using `/bin/login`, after reading credentials stored in the `/etc/passwd` file: **Login**, **Interactive**
@@ -465,11 +426,6 @@ The shell can be run in three possible modes:
    -  `~/.bash_logout` file – it’s not used for shell startup, but stores user specific instructions for the logout procedure. It is read and executed when a user exits from an interactive login shell.
 ---
 
-## Order of Activation:
-![](https://blog2opstree.files.wordpress.com/2020/02/shell-initailizationfiles-1.png?w=1024)
-
----
-
 ## A Sea of Shells
 
 - There are 27+ Shells... 
@@ -495,27 +451,19 @@ $ printenv SHELL
 
 ---
 
-## Shell Command Applications
-
-- Getting information
-- Navigating and working with files and directories. 
-- Printing file and string contents​. 
-- File compression and archiving​. Performing network operations.
-- Monitoring performance and status of the system, its components and applications. 
-- Running batch jobs, such as **E**xtract **T**ransform **L**oad (ETL) operations
-
----
-
 ## Basic CLI Utilities Desgin
 
-![center](https://www.maizure.org/projects/decoded-gnu-coreutils/general_cli_utility.png)
+<div style="padding-top:200px">
 
-<!--innovaction-->
+![](https://www.maizure.org/projects/decoded-gnu-coreutils/general_cli_utility.png "centered")
+
+<!--invocaction-->
 
 ---
 
-
 ## Getting Information
+
+<div style="padding-top:100px">
 
 - `whoami` – which returns the user's username
 - `id` – which returns the current user and group IDs, 
@@ -526,9 +474,13 @@ $ printenv SHELL
 - `man` – fetches the reference manual for any shell command,
 - `date` – prints today's date.
 
+</div>
+
 ---
 
 ## Working with Files
+
+<div style="padding-top:100px">
 
 - `cp` – copy file, 
 - `mv` – change file name or path,
@@ -537,6 +489,8 @@ $ printenv SHELL
 - `chmod` – change/modify file permissions, 
 - `wc` – get count of lines, words, characters in file, 
 - `grep` – return lines in file matching pattern
+
+</div>
 
 ---
 
@@ -548,8 +502,6 @@ $ printenv SHELL
 - `mkdir` – makes a new directory, 
 - `cd` – changes the current directory to another directory, 
 - `rmdir` – removes an entire directory
-
----
 
 ## Printing File and String Contents
 
@@ -563,23 +515,25 @@ $ printenv SHELL
 
 ## Compression and Archiving
 
- - `tar` – which is used to archive a set of files, 
- - `gzip`/`zip` – which compresses a set of files,
- - `gunzip`/`unzip` – which extracts files from a compressed or zipped archive
-
----
+- `tar` – which is used to archive a set of files, 
+- `gzip`/`zip` – which compresses a set of files,
+- `gunzip`/`unzip` – which extracts files from a compressed or zipped archive
 
 ## Networking
 
-`hostname` – prints the host name, 
-`ping` – sends packets to a URL and prints the response, 
-`ifconfig` – displays or configures network interfaces on the system, 
-`curl` – displays the contents of a file located at a URL, and the wget command can be used to download a file from a URL.
+- `hostname` – prints the host name, 
+- `ping` – sends packets to a URL and prints the response, 
+- `ifconfig` – displays or configures network interfaces on the system, 
+- `curl` – displays the contents of a file located at a URL, and the wget command can be used to download a file from a URL.
 
 ---
 ## Coreutils
 
+<div style="padding-top:250px">
+
 All of these commands and more that come shipped by default come from the [`coreutils`](https://www.gnu.org/software/coreutils/manual/coreutils.html)
+
+</div>
 
 ![bg right:50% 100%](https://www.maizure.org/projects/decoded-gnu-coreutils/GNU.png)
 
@@ -796,16 +750,16 @@ utility_name [-a][-b][-c option_argument]
 
 ## OSs and POSIX Compliancy
 
+<div style="font-size:31px">
+
 - **Linux**
   - It’s certainly possible to create a Linux-based operating system that is entirely POSIX compliant. EulerOS is a good example of that. However, most modern programs, especially closed-source software, conform to the standard either partially or not at all.
   - As an example, the bash shell used to be completely POSIX compliant. The recent versions of bash, however, don’t conform to the POSIX standard by default. So, one can say that most Linux distributions are partially POSIX-compliant.
   
----
-
-## OSs and POSIX Compliancy
-
 - **Darwin**
   - Darwin is the core set for Apple’s operating systems, such as macOS and iOS. It is partially POSIX compliant. However, the recent releases of macOS are completely POSIX compliant.
 
 - **Windows NT**
   - Microsoft Windows doesn’t conform to the standard at all because its whole design is completely different than UNIX-like operating systems. However, we can set up a POSIX compliant environment by using the WSL compatibility layer or Cygwin.
+
+</div>
